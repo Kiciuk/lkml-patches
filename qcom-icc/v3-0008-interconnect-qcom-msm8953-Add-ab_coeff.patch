@@ -1,0 +1,36 @@
+From 699ddea69bbff32209af8a075da854f3388fae76 Mon Sep 17 00:00:00 2001
+From: Adam Skladowski <a39.skl@gmail.com>
+Date: Wed, 3 Jul 2024 21:17:26 +0200
+Subject: [PATCH v3 8/9] interconnect: qcom: msm8953: Add ab_coeff
+
+BIMC and SNOC-MM on downstream feature
+qcom,util-fact which translates to ab_coeff, add it.
+
+Signed-off-by: Adam Skladowski <a39.skl@gmail.com>
+---
+ drivers/interconnect/qcom/msm8953.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/interconnect/qcom/msm8953.c b/drivers/interconnect/qcom/msm8953.c
+index 9e8867c07692..62f8c0774b3e 100644
+--- a/drivers/interconnect/qcom/msm8953.c
++++ b/drivers/interconnect/qcom/msm8953.c
+@@ -1169,6 +1169,7 @@ static const struct qcom_icc_desc msm8953_bimc = {
+ 	.nodes = msm8953_bimc_nodes,
+ 	.num_nodes = ARRAY_SIZE(msm8953_bimc_nodes),
+ 	.qos_offset = 0x8000,
++	.ab_coeff = 153,
+ 	.regmap_cfg = &msm8953_bimc_regmap_config
+ };
+ 
+@@ -1295,6 +1296,7 @@ static const struct qcom_icc_desc msm8953_snoc_mm = {
+ 	.nodes = msm8953_snoc_mm_nodes,
+ 	.num_nodes = ARRAY_SIZE(msm8953_snoc_mm_nodes),
+ 	.qos_offset = 0x7000,
++	.ab_coeff = 153,
+ 	.regmap_cfg = &msm8953_snoc_regmap_config,
+ };
+ 
+-- 
+2.45.2
+

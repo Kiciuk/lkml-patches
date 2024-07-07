@@ -1,0 +1,57 @@
+From bf0af4a2ea9efb02ba9e512629d5c680404404db Mon Sep 17 00:00:00 2001
+From: Adam Skladowski <a39.skl@gmail.com>
+Date: Fri, 5 Jul 2024 18:47:59 +0200
+Subject: [PATCH v3 0/9] msm8937/msm8976/qcs404 icc patches
+
+This series introduce new ICC drivers for some legacy socs
+while at it also updates a bit of qcs404 driver which seems
+to not receive much attention lately.
+Please take in consideration i do not own any qcs404 board
+so i cannot test anything else than if it compiles.
+
+Changes since v2
+================
+1. Moved yamls from separate files into shared file.
+2. Added commit to fix msm8953 yaml.
+
+Changes since v1
+================
+1. Reworded commit messages.
+2. Dropped intf clocks from MSM8976 driver and yaml.
+3. Aligned yamls to qcom,msm8953.yaml format.
+4. Removed redundant nodes from examples.
+5. Added regmap include into qcs404 regmap commit.
+6. Added coeffs to MSM8976 driver.
+7. Added MSM8953 ab_coeff patch.
+
+Adam Skladowski (9):
+  dt-bindings: interconnect: qcom: Add Qualcomm MSM8976 NoC
+  interconnect: qcom: Add MSM8976 interconnect provider driver
+  dt-bindings: interconnect: qcom: Add Qualcomm MSM8937 NoC
+  interconnect: qcom: Add MSM8937 interconnect provider driver
+  interconnect: qcom: qcs404: Mark AP-owned nodes as such
+  interconnect: qcom: qcs404: Add regmaps and more bus descriptions
+  dt-bindings: interconnect: qcom: msm8939: Fix example
+  interconnect: qcom: msm8953: Add ab_coeff
+  dt-bindings: interconnect: qcom: msm8953: Fix 'See also' in
+    description
+
+ .../bindings/interconnect/qcom,msm8939.yaml   |   25 +-
+ .../bindings/interconnect/qcom,msm8953.yaml   |    3 +-
+ drivers/interconnect/qcom/Kconfig             |   18 +
+ drivers/interconnect/qcom/Makefile            |    4 +
+ drivers/interconnect/qcom/msm8937.c           | 1372 ++++++++++++++++
+ drivers/interconnect/qcom/msm8953.c           |    2 +
+ drivers/interconnect/qcom/msm8976.c           | 1440 +++++++++++++++++
+ drivers/interconnect/qcom/qcs404.c            |  127 +-
+ .../dt-bindings/interconnect/qcom,msm8937.h   |   93 ++
+ .../dt-bindings/interconnect/qcom,msm8976.h   |   97 ++
+ 10 files changed, 3165 insertions(+), 16 deletions(-)
+ create mode 100644 drivers/interconnect/qcom/msm8937.c
+ create mode 100644 drivers/interconnect/qcom/msm8976.c
+ create mode 100644 include/dt-bindings/interconnect/qcom,msm8937.h
+ create mode 100644 include/dt-bindings/interconnect/qcom,msm8976.h
+
+-- 
+2.45.2
+

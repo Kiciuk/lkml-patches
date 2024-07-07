@@ -1,0 +1,33 @@
+From 0f67fafd706a2713b22623a65966e0ec056f9565 Mon Sep 17 00:00:00 2001
+From: Adam Skladowski <a39.skl@gmail.com>
+Date: Sun, 9 Jun 2024 16:59:58 +0200
+Subject: [PATCH v3 7/9] dt-bindings: interconnect: qcom: msm8939: Fix example
+
+For now example list snoc_mm as children of bimc which is obviously
+not valid, drop bimc and move snoc_mm into snoc.
+
+Signed-off-by: Adam Skladowski <a39.skl@gmail.com>
+---
+ .../devicetree/bindings/interconnect/qcom,msm8939.yaml      | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/interconnect/qcom,msm8939.yaml b/Documentation/devicetree/bindings/interconnect/qcom,msm8939.yaml
+index d19e20247df8..4b08be72bbd7 100644
+--- a/Documentation/devicetree/bindings/interconnect/qcom,msm8939.yaml
++++ b/Documentation/devicetree/bindings/interconnect/qcom,msm8939.yaml
+@@ -69,12 +69,6 @@ examples:
+         compatible = "qcom,msm8939-snoc";
+         reg = <0x00580000 0x14000>;
+         #interconnect-cells = <1>;
+-    };
+-
+-    bimc: interconnect@400000 {
+-        compatible = "qcom,msm8939-bimc";
+-        reg = <0x00400000 0x62000>;
+-        #interconnect-cells = <1>;
+ 
+           snoc_mm: interconnect-snoc {
+               compatible = "qcom,msm8939-snoc-mm";
+-- 
+2.45.2
+
