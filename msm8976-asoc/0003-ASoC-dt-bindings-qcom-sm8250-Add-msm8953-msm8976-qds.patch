@@ -1,0 +1,56 @@
+From af30a4fc40466389f193a1f1b3b6d0b20ad4c964 Mon Sep 17 00:00:00 2001
+From: Adam Skladowski <a39.skl@gmail.com>
+Date: Sat, 13 Jul 2024 16:48:20 +0200
+Subject: [PATCH 3/4] ASoC: dt-bindings: qcom,sm8250: Add
+ msm8953/msm8976-qdsp6-sndcard
+
+Document MSM8953/MSM8976 QDSP6 cards.
+
+Signed-off-by: Adam Skladowski <a39.skl@gmail.com>
+---
+ .../bindings/sound/qcom,sm8250.yaml           | 22 +++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/sound/qcom,sm8250.yaml b/Documentation/devicetree/bindings/sound/qcom,sm8250.yaml
+index b2e15ebbd1bc..b7d5f4cf382b 100644
+--- a/Documentation/devicetree/bindings/sound/qcom,sm8250.yaml
++++ b/Documentation/devicetree/bindings/sound/qcom,sm8250.yaml
+@@ -29,6 +29,8 @@ properties:
+       - enum:
+           - qcom,apq8016-sbc-sndcard
+           - qcom,msm8916-qdsp6-sndcard
++          - qcom,msm8953-qdsp6-sndcard
++          - qcom,msm8976-qdsp6-sndcard
+           - qcom,qcm6490-idp-sndcard
+           - qcom,qcs6490-rb3gen2-sndcard
+           - qcom,qrb5165-rb5-sndcard
+@@ -139,6 +141,26 @@ allOf:
+           items:
+             - const: mic-iomux
+             - const: spkr-iomux
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - qcom,msm8953-qdsp6-sndcard
++              - qcom,msm8976-qdsp6-sndcard
++    then:
++      properties:
++        reg:
++          items:
++            - description: Microphone I/O mux register address
++            - description: Speaker I/O mux register address
++            - description: Quinary Mi2S I/O mux register address
++        reg-names:
++          items:
++            - const: mic-iomux
++            - const: spkr-iomux
++            - const: quin-iomux
++
+       required:
+         - compatible
+         - model
+-- 
+2.45.2
+

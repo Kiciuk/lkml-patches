@@ -1,0 +1,24 @@
+From 669f19aa6276db6a6d58f75afc9a576d6b7c200d Mon Sep 17 00:00:00 2001
+From: Adam Skladowski <a39.skl@gmail.com>
+Date: Sat, 13 Jul 2024 21:23:25 +0200
+Subject: [PATCH 0/4] MSM8953/MSM8976 ASoC support
+
+Introduce support for basic sound card setup on MSM8953/MSM8976
+platforms, document new compatibles and introduce support for more dais.
+
+Adam Skladowski (1):
+  ASoC: dt-bindings: qcom,sm8250: Add msm8953/msm8976-qdsp6-sndcard
+
+Vladimir Lypak (3):
+  ASoC: qcom: apq8016_sbc.c: Add Quinary support
+  ASoC: msm8916-wcd-analog: add cajon and cajon v2 support
+  ASoC: qcom: apq8016_sbc: Add support for msm8953/msm8976 SoC
+
+ .../bindings/sound/qcom,sm8250.yaml           | 22 +++++
+ sound/soc/codecs/msm8916-wcd-analog.c         | 63 +++++++++++++-
+ sound/soc/qcom/apq8016_sbc.c                  | 82 ++++++++++++++++++-
+ 3 files changed, 161 insertions(+), 6 deletions(-)
+
+-- 
+2.45.2
+
