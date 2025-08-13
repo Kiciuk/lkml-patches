@@ -1,0 +1,35 @@
+{
+
+"servers": [
+
+{
+
+"id": 10,
+
+"name": "Yurian",
+
+"category": "<b><font color=\"#FFA500\">PvP</font></b>",
+
+"title": "<font color=\"#ffffff\">Yurian </font>",
+
+"queue": "no",
+
+"population": "<font color=\"#00ff00\">Mid</font>",
+
+"address": "88.99.102.111",
+
+"port": 9000,
+
+"available": 1,
+
+"unavailable_message": "Unable to access the server at this time",
+
+"host": null
+
+}
+
+],
+
+"sort_criterion": 2
+
+}
